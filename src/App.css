@@ -1,4 +1,5 @@
-#root {
+body {
+  overflow: hidden;
 }
 
 .grid-container::before {
@@ -12,6 +13,10 @@
   background-clip: content-box;
   content: "";
 }
+.grid-item:hover {
+  background-color: white;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

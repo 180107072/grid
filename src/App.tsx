@@ -10,12 +10,25 @@ const Tile: FC = () => {
         gridTemplateRows: "repeat(2, 1fr)",
         width: 80,
         height: 80,
+        pointerEvents: "all",
       }}
     >
-      <div style={{ border: "1px solid rgba(50,50,50)" }} />
-      <div style={{ border: "1px solid rgba(50,50,50)" }} />
-      <div style={{ border: "1px solid rgba(50,50,50)" }} />
-      <div style={{ border: "1px solid rgba(50,50,50)" }} />
+      <div
+        style={{ border: "0.5px solid rgba(50,50,50)" }}
+        className="grid-item"
+      ></div>
+      <div
+        style={{ border: "0.5px solid rgba(50,50,50)" }}
+        className="grid-item"
+      />
+      <div
+        style={{ border: "0.5px solid rgba(50,50,50)" }}
+        className="grid-item"
+      />
+      <div
+        style={{ border: "0.5px solid rgba(50,50,50)" }}
+        className="grid-item"
+      />
     </div>
   );
 };
@@ -49,11 +62,9 @@ function App() {
         display: "flex",
         flexDirection: "column",
         position: "relative",
-        minHeight: "100vh",
         margin: "0px auto",
         overflow: "hidden",
         height: "100vh",
-        cursor: "grab",
         background: "black",
       }}
     >
@@ -66,15 +77,13 @@ function App() {
           padding: 5,
           gridTemplateColumns: "repeat(30, 1fr)",
           gridTemplateRows: "repeat(30, 1fr)",
-          position: "fixed",
-          backgroundClip: "content-box",
+          position: "absolute",
           top: "50%",
           left: "50%",
-          opacity: "1",
-          transition: "opacity 300ms ease 0s",
           willChange: "transform",
           background: "black",
           overflow: "hidden",
+          pointerEvents: "none",
         }}
       >
         <p
@@ -85,18 +94,28 @@ function App() {
             gridRow: "11 / span 2",
           }}
         >
-          PidARAS
+          SOME TEXT
         </p>
-        <p
+        <div
           style={{
             fontSize: 20,
             color: "white",
             gridColumn: "20 / 14",
             gridRow: "15 / span 5",
+            overflow: "hidden",
+            position: "relative",
           }}
         >
-          PidARAS222
-        </p>
+          <img
+            src="https://picsum.photos/1000/1000"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              position: "absolute",
+            }}
+          />
+        </div>
         {[...Array(800).keys()].map((_, i) => (
           <Tile key={i} />
         ))}
