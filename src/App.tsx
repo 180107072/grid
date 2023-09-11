@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef, useState } from "react";
 import "./App.css";
+import { motion } from "framer-motion";
 
 const Tile: FC = () => {
   return (
@@ -86,17 +87,55 @@ function App() {
           pointerEvents: "none",
         }}
       >
-        <p
+        <motion.div
+          initial={{
+            boxShadow: "0px 0px 0px rgba(50,50,50)",
+            transform: "translate(0px, 0px)",
+            borderRadius: 40,
+            padding: 10,
+            opacity: 0,
+          }}
+          animate={{
+            boxShadow: "10px 10px 0px rgba(50,50,50)",
+            transform: "translate(-10px, -10px)",
+            borderRadius: 40,
+            padding: 10,
+            opacity: 1,
+            transition: {
+              delay: 2,
+            },
+          }}
           style={{
             fontSize: 20,
             color: "white",
             gridColumn: "10 / 20",
             gridRow: "11 / span 2",
+            overflow: "hidden",
+            position: "relative",
+            boxShadow: "10px 10px 0px rgba(50,50,50)",
+            transform: "translate(-10px, -10px)",
+            borderRadius: 40,
+            padding: 10,
           }}
         >
           SOME TEXT
-        </p>
-        <div
+        </motion.div>
+        <motion.div
+          initial={{
+            boxShadow: "0px 0px 0px rgba(50,50,50)",
+            transform: "translate(0px, 0px)",
+
+            opacity: 0,
+          }}
+          animate={{
+            boxShadow: "10px 10px 0px rgba(50,50,50)",
+            transform: "translate(-10px, -10px)",
+
+            opacity: 1,
+            transition: {
+              delay: 3,
+            },
+          }}
           style={{
             fontSize: 20,
             color: "white",
@@ -104,6 +143,9 @@ function App() {
             gridRow: "15 / span 5",
             overflow: "hidden",
             position: "relative",
+            boxShadow: "10px 10px 0px rgba(50,50,50)",
+            transform: "translate(-10px, -10px)",
+            borderRadius: 10,
           }}
         >
           <img
@@ -115,9 +157,43 @@ function App() {
               position: "absolute",
             }}
           />
-        </div>
+        </motion.div>
         {[...Array(800).keys()].map((_, i) => (
-          <Tile key={i} />
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: {
+                delay: i * 0.005,
+              },
+            }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gridTemplateRows: "repeat(2, 1fr)",
+              width: 80,
+              height: 80,
+              pointerEvents: "all",
+            }}
+          >
+            <div
+              style={{ border: "0.5px solid rgba(50,50,50)" }}
+              className="grid-item"
+            ></div>
+            <div
+              style={{ border: "0.5px solid rgba(50,50,50)" }}
+              className="grid-item"
+            />
+            <div
+              style={{ border: "0.5px solid rgba(50,50,50)" }}
+              className="grid-item"
+            />
+            <div
+              style={{ border: "0.5px solid rgba(50,50,50)" }}
+              className="grid-item"
+            />
+          </motion.div>
         ))}
       </div>
     </div>
